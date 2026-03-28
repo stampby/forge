@@ -1,0 +1,37 @@
+{
+  "agent": "forge",
+  "version": "0.1.0",
+  "workspace": "~/forge-projects",
+  "strix_halo": {
+    "host": "192.168.50.69",
+    "comfyui_port": 8188,
+    "llm_port": 8080
+  },
+  "integrations": {
+    "interpreter": {
+      "enabled": true,
+      "url": "http://strixhalo:8090/interpret"
+    },
+    "amp": {
+      "enabled": true,
+      "url": "http://strixhalo:8091/audio"
+    },
+    "comfyui": {
+      "enabled": true,
+      "url": "http://strixhalo:8188"
+    }
+  },
+  "defaults": {
+    "engine": "godot",
+    "project_type": "voxel",
+    "art_style": "voxel",
+    "texture_resolution": "512x512",
+    "prompt_enhance": true
+  },
+  "marketplace": {
+    "listed": true,
+    "category": "creative",
+    "color": "#ff6600",
+    "icon": "forge.svg"
+  }
+}
