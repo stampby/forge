@@ -10,6 +10,7 @@ Part of the [halo-ai](https://github.com/bong-water-water-bong/halo-ai) ecosyste
 - **Generate assets with AI** — textures, sprites, concept art via ComfyUI on Strix Halo
 - **Enhance prompts** — routes through [interpreter](https://github.com/bong-water-water-bong/interpreter) for better generation results
 - **Build pipelines** — export for Linux, Windows, Mac, Steam
+- **Steam deployment** — automated SteamCMD builds, VDF generation, depot management, rollback support
 - **Voxel model pipeline** — concept art generation -> Blockbench/MagicaVoxel workflow
 
 ## Quick start
@@ -45,6 +46,39 @@ forge (build & export)
 Steam / itch.io
 ```
 
+## Steam deployment
+
+forge includes a full Steam build/upload pipeline via `SteamDeploy`:
+
+```bash
+# Full pipeline (prepare, check, VDF, upload)
+# Integrates with sentinel (PR gate) and meek (security scan) automatically
+
+from src.pipeline.steam_deploy import SteamDeploy, Platform
+
+deploy = SteamDeploy(project_path, app_id="0000000", dry_run=True)
+deploy.full_deploy(
+    platforms=[Platform.LINUX, Platform.WINDOWS, Platform.MAC],
+    branch="default",
+    description="v0.1.0 release",
+)
+
+# Or step by step:
+build_id = deploy.prepare_build()
+deploy.run_pre_upload_checks()    # file size, debug builds, sentinel, meek
+vdf_path = deploy.create_vdf(build_id)
+deploy.upload_to_steam(vdf_path, build_id)
+
+# Rollback to previous build
+deploy.rollback()
+
+# Check what's live
+deploy.get_live_build()
+```
+
+Requires `steamcmd` (`sudo pacman -S steamcmd`) and `STEAM_BUILD_USER` env var.
+Set `dry_run=True` to test the pipeline without uploading.
+
 ## Integrations
 
 | Agent | Role |
@@ -53,6 +87,7 @@ Steam / itch.io
 | **amp** | Handles all audio — SFX, music, mastering |
 | **echo** | Community announcements, Discord updates |
 | **meek** | Security scanning on builds before release |
+| **sentinel** | PR gate — blocks Steam uploads if PRs are flagged |
 
 ## Project types
 
@@ -69,6 +104,7 @@ Steam / itch.io
 - Python 3.11+
 - ComfyUI on Strix Halo (for asset generation)
 - Blockbench or MagicaVoxel (for voxel modeling)
+- SteamCMD (`sudo pacman -S steamcmd`) — for Steam uploads
 
 ## Family
 
