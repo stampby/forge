@@ -1,9 +1,9 @@
 {
   "agent": "forge",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "workspace": "~/forge-projects",
   "strix_halo": {
-    "host": "192.168.50.69",
+    "host": "YOUR_STRIX_HALO_IP",
     "comfyui_port": 8188,
     "llm_port": 8080
   },

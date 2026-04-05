@@ -2,13 +2,13 @@
 
 **The game builder agent.** From raw metal to finished blade.
 
-Part of the [halo-ai](https://github.com/bong-water-water-bong/halo-ai) ecosystem. Available in the [Man Cave](https://github.com/bong-water-water-bong/man-cave) marketplace.
+Part of the [halo-ai](https://github.com/stampby/halo-ai) ecosystem. Available in the [Man Cave](https://github.com/stampby/man-cave) marketplace.
 
 ## What forge does
 
 - **Scaffold game projects** — Godot 3D, 2D, Voxel, or custom C++ engines
 - **Generate assets with AI** — textures, sprites, concept art via ComfyUI on Strix Halo
-- **Enhance prompts** — routes through [interpreter](https://github.com/bong-water-water-bong/interpreter) for better generation results
+- **Enhance prompts** — routes through [interpreter](https://github.com/stampby/interpreter) for better generation results
 - **Build pipelines** — export for Linux, Windows, Mac, Steam
 - **Steam deployment** — automated SteamCMD builds, VDF generation, depot management, rollback support
 - **Voxel model pipeline** — concept art generation -> Blockbench/MagicaVoxel workflow

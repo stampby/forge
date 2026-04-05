@@ -79,7 +79,7 @@ class Forge:
         self.workspace = workspace or Path.home() / "forge-projects"
         self.workspace.mkdir(parents=True, exist_ok=True)
         self.projects: dict[str, ForgeProject] = {}
-        self.strix_halo = os.getenv("STRIX_HALO_HOST", "192.168.50.69")
+        self.strix_halo = os.environ.get("HALO_STRIX_IP", "YOUR_STRIX_HALO_IP")
         self.comfyui_port = int(os.getenv("COMFYUI_PORT", "8188"))
         self.interpreter_url = os.getenv("INTERPRETER_URL", "")
         log.info(self.BANNER)
